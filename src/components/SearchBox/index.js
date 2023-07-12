@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchBox.css';
 
-const SearchBox = ({ onSearch }) => {
+const SearchBox = ({ pageNumber, pageSize, setData, setIsLoading }) => {
   const [searchParams, setSearchParams] = useState({
     first_name: '',
     last_name: '',
@@ -22,9 +22,39 @@ const SearchBox = ({ onSearch }) => {
     }));
   };
 
-  const handleSearch = () => {
-    onSearch(searchParams);
+  // Filter function
+  const handleSearch = (params) => {
+    console.log(params)
+    const queryParams = Object.entries(params)
+      .filter(([key, value]) => value !== '') // Filter out parameters with empty values as api expects only valid parameters
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+      .join('&');
+
+      if(!queryParams) return;
+
+    const url = `http://127.0.0.1:8000/freelancers/search?${queryParams}&page_number=${pageNumber}&page_size=${pageSize}`;
+    setIsLoading(true)
+    fetch(url)
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(response.statusText);
+        }
+
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+      }).catch((error) => {
+        console.log(error);
+        // Display the error to the user
+        alert(error.message);
+      }).finally(()=>setIsLoading(false));
   };
+
+
+  React.useEffect(()=>{
+    handleSearch(searchParams);
+  }, [pageNumber, pageSize])
 
   return (
     <div className="search-box">
@@ -67,7 +97,7 @@ const SearchBox = ({ onSearch }) => {
           <input type="text" name="verified_status" value={searchParams.verified_status} onChange={handleInputChange} />
         </div>
       </div>
-      <button className="btn" onClick={handleSearch}>Search</button>
+      <button className="btn" onClick={()=>handleSearch(searchParams)}>Search</button>
     </div>
   );
 };

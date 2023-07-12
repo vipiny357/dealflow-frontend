@@ -8,36 +8,12 @@ import SearchBox from '../components/SearchBox';
 
 const SearchPage = () => {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   // setting default pagenumber and page size
   const [pageNumber, setPageNumber] = useState(1);
-  const [pageSize, setPageSize] = useState(15);
+  const [pageSize, setPageSize] = useState(5);
 
-  // Filter function
-  const handleSearch = (params) => {
-    const queryParams = Object.entries(params)
-      .filter(([key, value]) => value !== '') // Filter out parameters with empty values as api expects only valid parameters
-      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-      .join('&');
-
-    const url = `http://127.0.0.1:8000/freelancers/search?${queryParams}&page_number=${pageNumber}&page_size=${pageSize}`;
-
-    return fetch(url)
-      .then((response) => {
-        if (response.status !== 200) {
-          throw new Error(response.statusText);
-        }
-
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-      }).catch((error) => {
-        console.log(error);
-        // Display the error to the user
-        alert(error.message);
-      });
-  };
-
+  
   // handling pagination through pagination component
   const handlePageChange = (newPageNumber) => {
     setPageNumber(newPageNumber);
@@ -55,9 +31,9 @@ const SearchPage = () => {
         <Link id="home-page-button" to="/" className="home-page-button">
           All Freelancers
         </Link>
-        <SearchBox onSearch={handleSearch} />
+        <SearchBox pageNumber={pageNumber} pageSize={pageSize} setData={setData} setIsLoading={setIsLoading} />
         <div className="page-container">
-          <GridContainer data={data} />
+          <GridContainer data={data} isLoading={isLoading} />
           <Pagination
             pageNumber={pageNumber}
             totalPages={data.totalPages}

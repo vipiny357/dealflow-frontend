@@ -1,15 +1,16 @@
 import React from 'react';
 import Grid from '../Grid';
 
-const GridContainer = ({ data }) => {
+const GridContainer = ({ data, isLoading }) => {
+  React.useEffect(()=>console.log(isLoading), [])
   return (
-    <div>
-      {data.length > 0 ? (
+    <>
+      {isLoading? <p>Loading data...</p> : data.length > 0 ? (
         <Grid data={data} />
       ) : (
-        <p>Loading data...</p>
+        <></>
       )}
-    </div>
+    </>
   );
 }
 
