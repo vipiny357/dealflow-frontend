@@ -32,7 +32,7 @@ const SearchBox = ({ pageNumber, pageSize, setData, setIsLoading }) => {
 
       if(!queryParams) return;
 
-    const url = `http://127.0.0.1:8000/freelancers/search?${queryParams}&page_number=${pageNumber}&page_size=${pageSize}`;
+    const url = `http://18.119.102.108/freelancers/search?${queryParams}&page_number=${pageNumber}&page_size=${pageSize}`;
     setIsLoading(true)
     fetch(url)
       .then((response) => {
