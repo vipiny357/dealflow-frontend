@@ -1,0 +1,7 @@
+I am completly new to the Reactjs framework, but i have tried to use good coding practices.
+1. I have used component based architecture - They help in modularizing and organizing the codebase .
+2. Usign components help reusablility instead of repeating the same code we could just import the components.
+3. I have used React's useState hook to manage and update state within functional components.
+4. I have used the useEffect hook to perform actions, such as fetching data from an API, by specifying the dependencies (url, pageNumber, pageSize), i ensured that the effect is triggered only when the relevant values change.
+5. I have used then and catch method to handle api error messages.
+6. I have tried to keep the code readable by destructuring the code into files with similar functionalities.

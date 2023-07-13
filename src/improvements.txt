@@ -1,0 +1,7 @@
+As a web app there is a lot of scope for improvement based upon user feedback and requirement changes.
+1. The UI could have been more interactive.
+2. More functionalities could have been added
+3. Error messages - instead of alert, i could have used sperate pages for error messages but keeping the user on same page ensures they can retry, routing to error message pages seemed unecessary.
+4. Tests- Exclusive Testing of functionalities should have been included
+5. Use of Next.js - While learning Reactjs wherever i read it was mentioned Next.js is way better than reactjs.
+6. Use of profile pictures of freelancers in the card. The cards might have looked a little better.
