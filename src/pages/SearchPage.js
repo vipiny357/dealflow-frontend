@@ -11,7 +11,7 @@ const SearchPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   // setting default pagenumber and page size
   const [pageNumber, setPageNumber] = useState(1);
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState(15);
 
   
   // handling pagination through pagination component
