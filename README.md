@@ -1,3 +1,7 @@
+# Frontend of Search API README
+
+This project is a frontend application built using React.js. It provides a user interface to interact with a backend API to display and search for freelancers. It can retrieve the list of freelancers available on the website and filter out the result based on specific parameters. On Home page it displays the list of all the available freelancers on the website and on the Search page we can filter out the specific freelancer based on search parameters.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -39,32 +43,29 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## File system
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The file system of the project is as follows:
+* `src/App.js`: It contains the routing configuration for the application. 
+* `src/pages/HomePage.js`: It contains the homepage component, which displays a list of all freelancers.
+* `src/pages/SearchPage.js`: It contains the search page component, allowing users to search for freelancers.
+* `src/components/...`: This directory contains various reusable components used in the project.
 
-### Code Splitting
+## API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The frontend application interacts with a backend API to fetch data. The API endpoints used in the code are:
 
-### Analyzing the Bundle Size
+* `https://18.188.92.21/freelancers`: This endpoint retrieves a list of freelancers.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* `https://18.188.92.21/freelancers/search`: This endpoint performs a search for freelancers based on provided parameters.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The Dependencies required are available in package.json and will be automatically install when you run the `npm install` command.
 
-### Deployment
+## CI/CD pipeline
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+It has been setup with vercel to host which automatically handles the development and CI/CD integration with github.
