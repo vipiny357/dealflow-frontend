@@ -11,7 +11,7 @@ const HomePage = () => {
     const [pageNumber, setPageNumber] = useState(1);
     const [pageSize, setPageSize] = useState(15);
     // url to fetch from api
-    const url = `http://18.119.102.108/freelancers?page_number=${pageNumber}&page_size=${pageSize}`
+    const url = `https://18.119.102.108/freelancers?page_number=${pageNumber}&page_size=${pageSize}`
 
     useEffect(() => {
       fetch(url)
